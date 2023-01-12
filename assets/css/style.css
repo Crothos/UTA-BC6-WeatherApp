@@ -1,5 +1,5 @@
 :root {
-  --primary: #d1f7fa;
+  --primary: #c1c3c4;
   --secondary: #070b0c;
   --tertiary: #61a1f5;
   --light-dark: #2d3bf8;
@@ -31,6 +31,7 @@ h6 {
   margin: 0;
   color: var(--dark);
   line-height: 1.25;
+  font-size: 2em;
 }
 
 main {
@@ -38,6 +39,9 @@ main {
   width: 94%;
 }
 
+.fiveDayList li {
+  display: inline;
+}
 p {
   font-size: 1.2rem;
 }
