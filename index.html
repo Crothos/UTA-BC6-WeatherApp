@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css"/>
 </head>
@@ -10,14 +11,23 @@
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <main>
-        <div class ="container">
-            <form action="/action_page.php">
-                <label for="fname">Search for a city:</label><br>
-                <input type="text" id="city" name="cityname" value=""><br>
-            </form>
-        </div>
-    </main>
+        <main class="flex-row justify-space-between">
+            <div class="col-12 col-md-4">
+        
+              <div class="card">
+                <h3 class="card-header text-uppercase">Search by city</h3>
+                <form id="cityform" class="card-body">
+                  <label class="form-label" for="city">City</label>
+                  <input name="city" id="cityname" type="text" autofocus="true" class="form-input" />
+                  <button type="submit" class="btn" id="myBtn">Get Weather</button>
+                </form>
+              </div>
+        
+            <div class="col-12 col-md-8">
+              <h2 class="subtitle">Showing Repositories for: <span id="cityelem"></span></h2>
+              <div id="weather-list" class="list-group"></div>
+            </div>
+        </main>
 <script src="./assets/script.js"></script>
 </body>
 
