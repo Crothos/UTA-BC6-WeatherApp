@@ -1,8 +1,8 @@
 :root {
-  --primary: #c1c3c4;
+  --primary: #dee1e2;
   --secondary: #070b0c;
   --tertiary: #61a1f5;
-  --light-dark: #2d3bf8;
+  --light-dark: #1b24a1;
   --dark: #1a0d49;
   --border-radius: 0.3rem;
 }
@@ -32,6 +32,8 @@ h6 {
   color: var(--dark);
   line-height: 1.25;
   font-size: 2em;
+  text-shadow: 2px 2px 5px rgb(26, 197, 240);
+  padding: 1em;
 }
 
 main {
@@ -40,9 +42,17 @@ main {
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
+#weather-list {
+  display: flex;
+}
+
+li {
+  font-size: 1.1em;
+  font-weight: bold;
+}
 .fiveDayList {
   display: flex;
   justify-content: space-evenly;
