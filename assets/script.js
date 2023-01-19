@@ -13,6 +13,26 @@ var fdIcon3;
 var fdIcon4;
 var fdIcon5;
 
+var day1Temp;
+var day1Wind;
+var day1Humid;
+
+var day2Temp;
+var day2Wind;
+var day2Humid;
+
+var day3Temp;
+var day3Wind;
+var day3Humid;
+
+var day4Temp;
+var day4Wind;
+var day4Humid;
+
+var day5Temp;
+var day5Wind;
+var day5Humid;
+
 // TO DO: ADD FIVE DAY FORECAST AND APPEND LAST 5 HISTORY BUTTONS
 //5-day Forecast = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid=b4bddf8a88e63b2b5f41a2b614c276d6&units=imperial"
 
@@ -83,6 +103,21 @@ function getFiveDay() {
         fdDate4 = data.list[26].dt_txt;
         fdDate5 = data.list[34].dt_txt;
 
+        day1Humid = data.list[2].main.humidity;
+        day1Temp = data.list[2].main.temp;
+        day1Wind = data.list[2].wind.speed;
+        day2Humid = data.list[10].main.humidity;
+        day2Temp = data.list[10].main.temp;
+        day2Wind = data.list[10].wind.speed;
+        day3Humid = data.list[18].main.humidity;
+        day3Temp = data.list[18].main.temp;
+        day3Wind = data.list[18].wind.speed;
+        day4Humid = data.list[26].main.humidity;
+        day4Temp = data.list[26].main.temp;
+        day4Wind = data.list[26].wind.speed;
+        day5Humid = data.list[34].main.humidity;
+        day5Temp = data.list[34].main.temp;
+        day5Wind = data.list[34].wind.speed;
         renderFiveDay();
     })
     function renderFiveDay() {
@@ -109,7 +144,11 @@ function getFiveDay() {
         elem5.setAttribute("src", "http://openweathermap.org/img/wn/"+fdIcon5+"@2x.png");
         elem5.setAttribute("alt", "Weather Icon");
 
-        elem6.textContent = fdDate1;
+        elem6.textContent = `Date: ${fdDate1}
+        Humidity: ${day1Humid}
+        Temp: ${day1Temp}
+        Wind Speed: ${day1Wind}`;
+
         elem7.textContent = fdDate2;
         elem8.textContent = fdDate2;
         elem9.textContent = fdDate2;

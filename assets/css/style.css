@@ -46,6 +46,10 @@ p {
   font-size: 1.2rem;
 }
 
+
+#fiveDay {
+  display:flex;
+}
 .btn {
   font-size: 1.3rem;
   text-decoration: none;
