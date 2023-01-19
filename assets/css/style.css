@@ -39,17 +39,15 @@ main {
   width: 94%;
 }
 
-.fiveDayList li {
-  display: inline;
-}
 p {
   font-size: 1.2rem;
 }
 
-
-#fiveDay {
-  display:flex;
+.fiveDayList {
+  display: flex;
+  justify-content: space-evenly;
 }
+
 .btn {
   font-size: 1.3rem;
   text-decoration: none;

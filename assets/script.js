@@ -103,6 +103,12 @@ function getFiveDay() {
         fdDate4 = data.list[26].dt_txt;
         fdDate5 = data.list[34].dt_txt;
 
+        fdDate6 = fdDate1.substring(0, 10);
+        fdDate7 = fdDate2.substring(0, 10);
+        fdDate8 = fdDate3.substring(0, 10);
+        fdDate9 = fdDate4.substring(0, 10);
+        fdDate10 = fdDate5.substring(0, 10);
+
         day1Humid = data.list[2].main.humidity;
         day1Temp = data.list[2].main.temp;
         day1Wind = data.list[2].wind.speed;
@@ -133,6 +139,12 @@ function getFiveDay() {
         var elem9 = document.getElementById("dateFour");
         var elem10 = document.getElementById("dateFive");
 
+        var elem11 = document.getElementById("dOne");
+        var elem12 = document.getElementById("dTwo");
+        var elem13 = document.getElementById("dThree");
+        var elem14 = document.getElementById("dFour");
+        var elem15 = document.getElementById("dFive");
+
         elem1.setAttribute("src", "http://openweathermap.org/img/wn/"+fdIcon1+"@2x.png");
         elem1.setAttribute("alt", "Weather Icon");
         elem2.setAttribute("src", "http://openweathermap.org/img/wn/"+fdIcon2+"@2x.png");
@@ -144,15 +156,61 @@ function getFiveDay() {
         elem5.setAttribute("src", "http://openweathermap.org/img/wn/"+fdIcon5+"@2x.png");
         elem5.setAttribute("alt", "Weather Icon");
 
-        elem6.textContent = `Date: ${fdDate1}
-        Humidity: ${day1Humid}
-        Temp: ${day1Temp}
-        Wind Speed: ${day1Wind}`;
+        elem6.textContent = fdDate6;
+        elem7.textContent = fdDate7;
+        elem8.textContent = fdDate8;
+        elem9.textContent = fdDate9;
+        elem10.textContent = fdDate10;
 
-        elem7.textContent = fdDate2;
-        elem8.textContent = fdDate2;
-        elem9.textContent = fdDate2;
-        elem10.textContent = fdDate2;
+        var li = document.createElement('li');
+        li.innerHTML = "Humidity: " + day1Humid + "%";
+        var li2 = document.createElement('li');
+        li2.innerHTML = "Temp: " + day1Temp + "F";
+        var li3 = document.createElement('li');
+        li3.innerHTML = "Wind Speed: " + day1Wind + "mph";
+        elem11.appendChild(li);
+        elem11.appendChild(li2);
+        elem11.appendChild(li3);
+
+        var li4 = document.createElement('li');
+        li4.innerHTML = "Humidity: " + day2Humid + "%";
+        var li5 = document.createElement('li');
+        li5.innerHTML = "Temp: " + day2Temp + "F";
+        var li6 = document.createElement('li');
+        li6.innerHTML = "Wind Speed: " + day2Wind + "mph";
+        elem12.appendChild(li4);
+        elem12.appendChild(li5);
+        elem12.appendChild(li6);
+
+        var li7 = document.createElement('li');
+        li7.innerHTML = "Humidity: " + day3Humid + "%";
+        var li8 = document.createElement('li');
+        li8.innerHTML = "Temp: " + day3Temp + "F";
+        var li9 = document.createElement('li');
+        li9.innerHTML = "Wind Speed: " + day3Wind + "mph";
+        elem13.appendChild(li7);
+        elem13.appendChild(li8);
+        elem13.appendChild(li9);
+
+        var li10 = document.createElement('li');
+        li10.innerHTML = "Humidity: " + day4Humid + "%";
+        var li11 = document.createElement('li');
+        li11.innerHTML = "Temp: " + day4Temp + "F";
+        var li12 = document.createElement('li');
+        li12.innerHTML = "Wind Speed: " + day4Wind + "mph";
+        elem14.appendChild(li10);
+        elem14.appendChild(li11);
+        elem14.appendChild(li12);
+
+        var li13 = document.createElement('li');
+        li13.innerHTML = "Humidity: " + day5Humid + "%";
+        var li14 = document.createElement('li');
+        li14.innerHTML = "Temp: " + day5Temp + "F";
+        var li15 = document.createElement('li');
+        li15.innerHTML = "Wind Speed: " + day5Wind + "mph";
+        elem15.appendChild(li13);
+        elem15.appendChild(li14);
+        elem15.appendChild(li15);
     }
 }
 }
