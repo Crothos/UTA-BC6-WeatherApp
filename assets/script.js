@@ -1,6 +1,7 @@
 var form = document.getElementById("cityform");
 
 var timeDisplayEl = document.getElementById("timeDay");
+var cityName;
 var currentCity;
 var currentWeather;
 var currentTemp;
@@ -33,8 +34,18 @@ var day5Temp;
 var day5Wind;
 var day5Humid;
 
-// TO DO: ADD FIVE DAY FORECAST AND APPEND LAST 5 HISTORY BUTTONS
-//5-day Forecast = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid=b4bddf8a88e63b2b5f41a2b614c276d6&units=imperial"
+
+var historyList = [];
+var savedHistoryList = JSON.parse(localStorage.getItem("history"));
+function printBtn() {
+    for (var i = 0; i < savedHistoryList.length; i++) {
+       var btn = document.createElement("button");
+       var t = document.createTextNode(savedHistoryList[i]);
+       var history = document.getElementById("history");
+       history.appendChild(btn);
+       btn.appendChild(t);
+    }}
+printBtn();
 
 function displayDate() {
     var rightNow = dayjs().format('MMM DD, YYYY');
@@ -45,17 +56,21 @@ form.addEventListener('submit', citySubmit);
 
  function citySubmit(event){
     event.preventDefault();
-
     displayDate();
-
     var city = document.getElementById("cityname").value;
-    localStorage.setItem('city', city);
-    
+    cityName = city;
+    historyList.push(cityName);
+    var btn = document.createElement("button");
+    var t = document.createTextNode(cityName);
+    var history = document.getElementById("history");
+    history.appendChild(btn);
+    btn.appendChild(t);
+    localStorage.setItem("history", JSON.stringify(historyList));
     getApi();
 }
 
  function getApi() {
-    var city = localStorage.getItem('city');
+    var city = cityName;
      fetch("https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=b4bddf8a88e63b2b5f41a2b614c276d6&units=imperial")
      .then(function (response) {
        return response.json();
@@ -84,7 +99,7 @@ function renderCurrentConditions() {
     document.getElementById("currentHumid").innerText = "Humidity: " + currentHumidity + "%";
 }
 function getFiveDay() {
-    var city = localStorage.getItem('city');
+    var city = cityName;
     fetch("https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid=b4bddf8a88e63b2b5f41a2b614c276d6&units=imperial")
     .then(function (response) {
         return response.json();
@@ -163,51 +178,51 @@ function getFiveDay() {
         elem10.textContent = fdDate10;
 
         var li = document.createElement('li');
-        li.innerHTML = "Humidity: " + day1Humid + "%";
+        li.textContent = "Humidity: " + day1Humid + "%";
         var li2 = document.createElement('li');
-        li2.innerHTML = "Temp: " + day1Temp + "F";
+        li2.textContent = "Temp: " + day1Temp + "F";
         var li3 = document.createElement('li');
-        li3.innerHTML = "Wind Speed: " + day1Wind + "mph";
+        li3.textContent = "Wind Speed: " + day1Wind + "mph";
         elem11.appendChild(li);
         elem11.appendChild(li2);
         elem11.appendChild(li3);
 
         var li4 = document.createElement('li');
-        li4.innerHTML = "Humidity: " + day2Humid + "%";
+        li4.textContent = "Humidity: " + day2Humid + "%";
         var li5 = document.createElement('li');
-        li5.innerHTML = "Temp: " + day2Temp + "F";
+        li5.textContent = "Temp: " + day2Temp + "F";
         var li6 = document.createElement('li');
-        li6.innerHTML = "Wind Speed: " + day2Wind + "mph";
+        li6.textContent = "Wind Speed: " + day2Wind + "mph";
         elem12.appendChild(li4);
         elem12.appendChild(li5);
         elem12.appendChild(li6);
 
         var li7 = document.createElement('li');
-        li7.innerHTML = "Humidity: " + day3Humid + "%";
+        li7.textContent = "Humidity: " + day3Humid + "%";
         var li8 = document.createElement('li');
-        li8.innerHTML = "Temp: " + day3Temp + "F";
+        li8.textContent = "Temp: " + day3Temp + "F";
         var li9 = document.createElement('li');
-        li9.innerHTML = "Wind Speed: " + day3Wind + "mph";
+        li9.textContent = "Wind Speed: " + day3Wind + "mph";
         elem13.appendChild(li7);
         elem13.appendChild(li8);
         elem13.appendChild(li9);
 
         var li10 = document.createElement('li');
-        li10.innerHTML = "Humidity: " + day4Humid + "%";
+        li10.textContent = "Humidity: " + day4Humid + "%";
         var li11 = document.createElement('li');
-        li11.innerHTML = "Temp: " + day4Temp + "F";
+        li11.textContent = "Temp: " + day4Temp + "F";
         var li12 = document.createElement('li');
-        li12.innerHTML = "Wind Speed: " + day4Wind + "mph";
+        li12.textContent = "Wind Speed: " + day4Wind + "mph";
         elem14.appendChild(li10);
         elem14.appendChild(li11);
         elem14.appendChild(li12);
 
         var li13 = document.createElement('li');
-        li13.innerHTML = "Humidity: " + day5Humid + "%";
+        li13.textContent = "Humidity: " + day5Humid + "%";
         var li14 = document.createElement('li');
-        li14.innerHTML = "Temp: " + day5Temp + "F";
+        li14.textContent = "Temp: " + day5Temp + "F";
         var li15 = document.createElement('li');
-        li15.innerHTML = "Wind Speed: " + day5Wind + "mph";
+        li15.textContent = "Wind Speed: " + day5Wind + "mph";
         elem15.appendChild(li13);
         elem15.appendChild(li14);
         elem15.appendChild(li15);
