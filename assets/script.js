@@ -37,6 +37,12 @@ var day5Humid;
 
 var historyList = [];
 var savedHistoryList = JSON.parse(localStorage.getItem("history"));
+console.log(savedHistoryList);
+if (savedHistoryList === null){
+    console.log("Empty!")
+} else {
+    printBtn();
+}
 function printBtn() {
     for (var i = 0; i < savedHistoryList.length; i++) {
        var btn = document.createElement("button");
@@ -45,7 +51,6 @@ function printBtn() {
        history.appendChild(btn);
        btn.appendChild(t);
     }}
-printBtn();
 
 function displayDate() {
     var rightNow = dayjs().format('MMM DD, YYYY');
